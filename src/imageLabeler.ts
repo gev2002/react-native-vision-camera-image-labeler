@@ -20,7 +20,7 @@ import {
     options: ImageLabelingOptions
   ): ImageLabelerPlugin {
     const plugin: FrameProcessorPlugin | undefined =
-      VisionCameraProxy.initFrameProcessorPlugin('scanImage', {
+      VisionCameraProxy.initFrameProcessorPlugin('labelerImage', {
         ...options,
       });
     if (!plugin) {

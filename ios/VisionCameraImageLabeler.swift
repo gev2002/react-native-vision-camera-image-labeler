@@ -1,11 +1,7 @@
-import VisionCamera
 import Foundation
+import VisionCamera
 import MLKitVision
 import MLKitImageLabeling
-import CoreML
-import UIKit
-import AVFoundation
-import SceneKit
 
 
 
@@ -64,4 +60,5 @@ public class VisionCameraImageLabeler: FrameProcessorPlugin {
             return .up
         }
       }
+
 }

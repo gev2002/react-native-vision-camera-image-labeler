@@ -60,6 +60,3 @@ export function useImageLabeler(
     [options]
   );
 }
-
-
-
