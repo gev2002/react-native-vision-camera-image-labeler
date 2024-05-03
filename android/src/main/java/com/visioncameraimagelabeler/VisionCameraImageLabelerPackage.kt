@@ -8,11 +8,11 @@ import com.facebook.react.bridge.NativeModule
 import com.mrousavy.camera.frameprocessors.FrameProcessorPluginRegistry
 
 
-class ImageLabelerPackage : ReactPackage {
+class VisionCameraImageLabelerPackage : ReactPackage {
   companion object {
     init {
       FrameProcessorPluginRegistry.addFrameProcessorPlugin("labelerImage") {proxy,options ->
-        ImageLabelerModule(proxy,options)
+        VisionCameraImageLabelerModule(proxy,options)
       }
     }
   }

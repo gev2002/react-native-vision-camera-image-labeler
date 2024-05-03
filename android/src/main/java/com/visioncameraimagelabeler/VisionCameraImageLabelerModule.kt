@@ -14,7 +14,7 @@ import com.mrousavy.camera.frameprocessors.Frame
 import com.mrousavy.camera.frameprocessors.FrameProcessorPlugin
 import com.mrousavy.camera.frameprocessors.VisionCameraProxy
 
-class ImageLabelerModule (proxy : VisionCameraProxy, options: Map<String, Any>?): FrameProcessorPlugin() {
+class VisionCameraImageLabelerModule (proxy : VisionCameraProxy, options: Map<String, Any>?): FrameProcessorPlugin() {
     private var labeler: ImageLabeler = ImageLabeling.getClient(ImageLabelerOptions.DEFAULT_OPTIONS)
     private var minConfidence = options?.get("minConfidence").toString().toFloat()
 

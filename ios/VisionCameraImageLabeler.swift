@@ -9,8 +9,8 @@ import SceneKit
 
 
 
-@objc(ImageLabeler)
-public class ImageLabeler: FrameProcessorPlugin {
+@objc(VisionCameraImageLabeler)
+public class VisionCameraImageLabeler: FrameProcessorPlugin {
     public override init(proxy: VisionCameraProxyHolder, options: [AnyHashable: Any]! = [:]) {
         super.init(proxy: proxy, options: options)
         let minConfidence = options["minConfidence"]!
