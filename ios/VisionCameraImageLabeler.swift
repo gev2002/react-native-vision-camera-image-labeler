@@ -44,21 +44,14 @@ public class VisionCameraImageLabeler: FrameProcessorPlugin {
 
         return data
     }
-    private func getOrientation(
-        orientation: UIImage.Orientation
-      ) -> UIImage.Orientation {
-        switch orientation {
-          case .right, .leftMirrored:
-            return .up
-          case .left, .rightMirrored:
-            return .down
-          case .up, .downMirrored:
-            return .left
-          case .down, .upMirrored:
-            return .right
-        default:
-            return .up
-        }
-      }
+    private func getOrientation(orientation: UIImage.Orientation) -> UIImage.Orientation {
+            switch orientation.rawValue {
+            case 0: return .right
+            case 1: return .left
+            case 2: return .down
+            case 3: return .up
+            default: return .up
+            }
+    }
 
 }
