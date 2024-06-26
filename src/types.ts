@@ -63,5 +63,5 @@ export type ImageScannerOptions = {
     | 'portrait'
     | 'portraitUpsideDown'
     | 'landscapeLeft';
-  minConfidence: ImageLabelingOptions['minConfidence'];
+  minConfidence?: ImageLabelingOptions['minConfidence'];
 };
