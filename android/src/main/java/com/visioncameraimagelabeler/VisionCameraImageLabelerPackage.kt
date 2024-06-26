@@ -16,11 +16,14 @@ class VisionCameraImageLabelerPackage : ReactPackage {
       }
     }
   }
-  override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
-    return emptyList()
-  }
 
   override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
     return emptyList()
   }
+
+  override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
+      return listOf(
+        ImageScannerModule(reactContext)
+      )
+    }
 }
