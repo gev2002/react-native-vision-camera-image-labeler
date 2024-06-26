@@ -9,7 +9,13 @@ export async function ImageScanner(
   if (!uri) {
     throw Error("Can't resolve img uri");
   }
-  if (Platform.OS === 'android') {
+  if (Platform.OS === 'ios') {
+    return await ImageScannerModule.process(
+      uri.replace('file://', ''),
+      orientation || 'portrait',
+      minConfidence || 1.0
+    );
+  } else {
     return await ImageScannerModule.process(uri, minConfidence || 1.0);
   }
 }
