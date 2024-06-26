@@ -2,8 +2,8 @@
 A plugin to label images using ML Kit Image Labeler. With High Performance.
 
 # 🚨 Required Modules
-react-native-vision-camera => 4.0.0 <br/>
-react-native-worklets-core = 1.2.0
+react-native-vision-camera => 4.3.2 <br/>
+react-native-worklets-core = 1.3.3
 
 ## 💻 Installation
 
@@ -19,6 +19,7 @@ yarn add react-native-vision-camera-image-labeler
     Works Fast.
     Works With Android 🤖 and IOS.📱
     Writen With Kotlin and Swift.
+    Can Scan Image From Photo. 📸
 
 ## 💡 Usage
 
@@ -95,6 +96,30 @@ export default App;
 | Name |  Type    |  Values   | Default |
 | :---:   | :---: |:---------:|  :---: |
 | minConfidence | Number   | 0.1 - 1.0 | 0.1 |
+
+
+##  Scan From Photo 📸
+
+```js
+import { ImageScanner } from "react-native-vision-camera-image-labeler";
+
+const result = await ImageScanner({
+    uri:assets.uri,
+    orientation: "portrait",
+    minConfidence: 1.0
+
+})
+console.log(result);
+
+```
+<h4>🚨 Orientation available only for iOS, recommendation give it when you are using Camera.</h3>
+
+|    Name     |  Type  |                           Values                            | Required | Default  |   Platform   |
+|:-----------:|:------:|:-----------------------------------------------------------:|:--------:|:--------:|:------------:|
+|     uri     | string |                                                             |   yes    |          | android, iOS |
+| orientation | string | portrait, portraitUpsideDown, landscapeLeft, landscapeRight |    no    | portrait |     iOS      |
+| minConfidence | number |                          0.1 ~ 1.0                          |    no    |   1.0    | android,iOS  |
+
 
 
 
