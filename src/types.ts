@@ -53,7 +53,7 @@ export interface Label {
 }
 
 export type ImageLabelerPlugin = {
-  scanImage: (frame: Frame) => Label;
+  scanImage: (frame: Frame) => Label[];
 };
 
 export type ImageScannerOptions = {

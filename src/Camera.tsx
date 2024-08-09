@@ -22,7 +22,7 @@ export const Camera = forwardRef(function Camera(
   const { device, callback, options = {}, ...p } = props;
   const { scanImage } = useImageLabeler(options);
   const useWorklets = useRunOnJS(
-    (data: Label): void => {
+    (data: Label[]): void => {
       callback(data);
     },
     [options]
@@ -30,7 +30,7 @@ export const Camera = forwardRef(function Camera(
   const frameProcessor: ReadonlyFrameProcessor = useFrameProcessor(
     (frame: Frame) => {
       'worklet';
-      const data: Label = scanImage(frame);
+      const data: Label[] = scanImage(frame);
       // @ts-ignore
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useWorklets(data);
@@ -55,8 +55,5 @@ export const Camera = forwardRef(function Camera(
 export function useImageLabeler(
   options?: ImageLabelingOptions
 ): ImageLabelerPlugin {
-  return useMemo(
-    () => createImageLabelerPlugin(options || { minConfidence: 0.1 }),
-    [options]
-  );
+  return useMemo(() => createImageLabelerPlugin(options), [options]);
 }

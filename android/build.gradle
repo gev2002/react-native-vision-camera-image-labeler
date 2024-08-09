@@ -90,8 +90,10 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-  implementation 'com.google.mlkit:image-labeling:17.0.8'
+  implementation 'com.google.mlkit:image-labeling:17.0.9'
   implementation project(':react-native-vision-camera')
   implementation "androidx.camera:camera-core:1.1.0"
+  implementation 'com.google.android.gms:play-services-mlkit-image-labeling:16.0.8'
+
 }
 

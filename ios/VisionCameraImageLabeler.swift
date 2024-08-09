@@ -9,12 +9,18 @@ import MLKitImageLabeling
 public class VisionCameraImageLabeler: FrameProcessorPlugin {
     public override init(proxy: VisionCameraProxyHolder, options: [AnyHashable: Any]! = [:]) {
         super.init(proxy: proxy, options: options)
-        let minConfidence = options["minConfidence"]!
-        if let minConfidence = minConfidence as? Double, minConfidence > 0 {
-            labelerOptions.confidenceThreshold = (minConfidence) as NSNumber
-        }
+
+        let minConfidence = options["minConfidence"] as? Double
+
+            if minConfidence == nil {
+                labelerOptions = ImageLabelerOptions()
+            } else if minConfidence! > 0 && minConfidence! < 1.0 {
+                labelerOptions.confidenceThreshold = NSNumber(value: minConfidence!)
+            } else {
+                labelerOptions = ImageLabelerOptions()
+            }
     }
-    private let labelerOptions = ImageLabelerOptions();
+    private var labelerOptions = ImageLabelerOptions();
     public override func callback(
         _ frame: Frame,
         withArguments arguments: [AnyHashable: Any]?
@@ -22,6 +28,7 @@ public class VisionCameraImageLabeler: FrameProcessorPlugin {
         var data:[Any] = []
         let buffer = frame.buffer
         let image = VisionImage(buffer: buffer);
+        print(" FRAME   \(frame.orientation.rawValue)")
         image.orientation = getOrientation(orientation: frame.orientation)
         let labeler = ImageLabeler.imageLabeler(options: labelerOptions);
         let dispatchGroup = DispatchGroup()
@@ -44,14 +51,21 @@ public class VisionCameraImageLabeler: FrameProcessorPlugin {
 
         return data
     }
-    private func getOrientation(orientation: UIImage.Orientation) -> UIImage.Orientation {
-            switch orientation.rawValue {
-            case 0: return .right
-            case 1: return .left
-            case 2: return .down
-            case 3: return .up
-            default: return .up
-            }
+    func getOrientation(
+      orientation: UIImage.Orientation
+    ) -> UIImage.Orientation {
+      switch orientation {
+        case .up:
+          return .up
+        case .left:
+          return .right
+        case .down:
+          return .down
+        case .right:
+          return .left
+        default:
+          return .up
+      }
     }
 
 }

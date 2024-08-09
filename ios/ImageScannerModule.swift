@@ -33,7 +33,6 @@ class ImageScannerModule: NSObject {
                             resolve(data)
                         }
                     }
-
                 }catch{
                     reject("Error","Processing Image",nil)
                 }

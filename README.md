@@ -2,7 +2,7 @@
 A plugin to label images using ML Kit Image Labeler. With High Performance.
 
 # 🚨 Required Modules
-react-native-vision-camera => 4.3.2 <br/>
+react-native-vision-camera => 4.5.1 <br/>
 react-native-worklets-core = 1.3.3
 
 ## 💻 Installation
@@ -39,7 +39,7 @@ function App (){
           style={StyleSheet.absoluteFill}
           device={device}
           isActive
-          // optional
+          // Optional
           options={{
             minConfidence: 0.1
           }}
@@ -65,8 +65,8 @@ import { useImageLabeler } from "react-native-vision-camera-image-labeler";
 
 function App() {
   const device = useCameraDevice('back');
-  const options = {minConfidence : 0.1}
-  const {labelerImage} = useImageLabeler(options)
+  const options = {minConfidence : 0.1} // Optional
+  const {labelerImage} = useImageLabeler({minConfidence : 0.1})
   const frameProcessor = useFrameProcessor((frame) => {
     'worklet'
     const data = labelerImage(frame)
@@ -94,8 +94,8 @@ export default App;
 ## ⚙️ Options
 
 | Name |  Type    |  Values   | Default |
-| :---:   | :---: |:---------:|  :---: |
-| minConfidence | Number   | 0.1 - 1.0 | 0.1 |
+| :---:   | :---: |:---------:|:-------:|
+| minConfidence | Number   | 0.1 - 1.0 |   1.0   |
 
 
 ##  Scan From Photo 📸
